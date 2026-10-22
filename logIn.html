@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>AeroLink — Header</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@500&display=swap">
+  <link rel="stylesheet" href="logIn.css">
+  <script src="https://kit.fontawesome.com/5314ba342c.js" crossorigin="anonymous"></script>
+</head>
+<body> 
+  <header class="app-header">
+    <div class="header-inner">
+      <!-- Brand Anchor -->
+      <div class="brand">
+        <div class="brand-mark">
+          <span class="material-symbols-outlined">flight_takeoff</span>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">AeroLink</span>
+          <span class="brand-subtitle">Aviation Operations</span>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      
+
+      <!-- Right Utility Actions -->
+      <div class="utilities">
+        <div class="flight-status">
+          <span class="material-symbols-outlined">schedule</span>
+          <span>14:32 UTC</span>
+          <span class="divider">|</span>
+          <span class="temp">JFK 18°C</span>
+        </div>
+        <button class="icon-btn" title="Flight Updates" type="button">
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <a class="logout-btn" href="#">
+          <span class="material-symbols-outlined">account_circle</span>
+          <span>Logout</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-content">
+    <section class="portal-hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    
+    <!-- Top Meta Tags -->
+    <div class="meta-row">
+      <div class="badge status-badge">
+        <span class="dot"></span>
+        SYSTEM GATEWAY // 04-ACT
+      </div>
+      <div class="secure-text">SECURE DISPATCH</div>
+    </div>
+
+    <!-- Credentialing Badge -->
+    <div class="badge credential-badge">
+      <span class="material-symbols-outlined icon-small">verified</span>
+      IATA Validated Credentialing
+    </div>
+
+    <!-- Main Headings -->
+    <h1 class="hero-title">High-Precision Flight<br>Dispatch & Crew Portal</h1>
+    <p class="hero-description">
+      Direct authenticated access to AeroLink commercial booking modules, passenger manifest registries, and multi-hub route scheduling nodes.
+    </p>
+
+    <!-- Stats Grid -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-label">Active Flights</span>
+        <span class="stat-value">1,482</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-label">Network Health</span>
+        <span class="stat-value">99.98%</span>
+      </div>
+    </div>
+
+    <!-- Footer Meta Tags -->
+    <div class="footer-row">
+      <div class="encryption-status">
+        <span class="material-symbols-outlined icon-small">shield</span>
+        256-bit TLS Encrypted Node
+      </div>
+      <div class="version-tag">v4.19.0-BETA</div>
+    </div>
+
+  </div>
+</section>
+<section>
+  <div class="pages">
+  <button class="p_button active"><a href="logIn.html"><i class="fas fa-key"></i> Log In</a></button>
+  <button class="p_button"><a href="SignUp.html"><i class="fas fa-user-plus"></i> Sign Up</a></button>
+  <button class="p_button"><a href="Recovery.html"><i class="fas fa-history"></i> Recovery</a></button>
+</div>
+  <div class="box">
+    <div class="first">
+    <p id="ABSA">Airport Booking System Aerolink</p>
+    <h1>Welcome Back</h1>
+    <p>Enter your station or traveler credentials to manage your bookings and flights.</p>
+    </div>
+    <div class="second">
+    <form id="loginForm">
+  <label for="Email">Email Address</label><br>
+  <input type="text" id="email" name="Email" placeholder="name@aerolink.com"><br><br><br><br>
+  <div class="unlock"><label for="Password">Password</label><label for="Password"><a href="#" id="unlock">Forgot Password?</a></label></div><br>
+  <input id="password" name="Password" placeholder="Password" type="password"><br><br>
+  <div class="checkbox"><div><input type="checkbox">  Remember this terminal device.</div><div id="STA">STA-JFK-90</div></div>
+  <button id="mbutton">LogIn <i class="fa-solid fa-arrow-right" style="color: rgb(255, 255, 255);"></i></button>
+  <div class="createacc"><div>Don't have an account?</div><div><a href="SignUp.html" id="sup">Sign Up</a></div></div>
+    </form>
+    </div>
+  </div>
+  <div class="contact">
+    <p><i class="fa-regular fa-headphones" style="color: rgb(126, 152, 255);"></i> 24/7 Operations Desk: +1 (800) 555-Aero</p>
+    <p><a href="#" id="sspage">Station Status Page</a></p>
+  </div>
+</section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+    <div>Aerolink | © 2025 AeroLink Aviation System Inc. All rights reserved. High precision Flight <br>dispatch</div>
+    <div><a href="#">Flight Status</a></div>
+    <div><a href="#">Terms of carriage</a></div>
+    <div><a href="#">Privacy Policy <br><p id="support">support</p></a></div>
+    <div><a href="#">API Documentation</a></div>
+    <div><a href="#">Safety Regulation</a></div>
+    </div>
+  </footer>
+  <script src="login.js"></script> 
+</body>
+</html>

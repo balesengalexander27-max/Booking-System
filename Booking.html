@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AeroLink - Confirm & Finalize Reservation</title>
+  <!-- Google Material Symbols -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <!-- Google Fonts Inter -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="Booking.css">
+</head>
+<body>
+
+  <!-- ==========================================
+     HEADER SECTION
+     ========================================== -->
+  <header class="app-header">
+    <div class="brand-container">
+      <div class="brand-logo">
+        <span class="material-symbols-outlined">flight_takeoff</span>
+      </div>
+      <span class="brand-name">AeroLink</span>
+      <span class="system-badge">SYSTEM v4.8</span>
+    </div>
+    
+    <nav class="nav-links">
+      <a href="logIn.html">Log-In</a>
+      <a href="SignUp.html">Sign-Up</a>
+      <a href="Recovery.html">Forgot</a>
+      <a href="Dashboard.html">Customer Dashboard</a>
+      <a href="flights.html">Flight Search</a>
+      <a href="Booking.html" class="active">Flight Booking</a>
+      <a href="Admin.html">Admin Dashboard</a>
+    </nav>
+
+    <div class="header-right">
+      <div class="header-meta">
+        <span class="meta-label">JFK</span>
+        <span class="meta-val">UTC-4: 07:12</span>
+      </div>
+      <button class="icon-btn" aria-label="Notifications">
+        <span class="material-symbols-outlined">notifications</span>
+      </button>
+      <div class="user-profile">
+        <span class="user-avatar">BA</span>
+        <div class="user-info">
+          <span class="user-name">B. Alexander</span>
+          <span class="user-tier">SKYPRIORITY</span>
+        </div>
+      </div>
+      <button class="logout-btn">
+        <span class="material-symbols-outlined">logout</span> Logout
+      </button>
+    </div>
+  </header>
+
+  <!-- ==========================================
+     BREADCRUMBS & FARE LOCK BANNER
+     ========================================== -->
+  <div class="main-container">
+    <div class="page-top-bar">
+      <div class="breadcrumb-trail">
+        <a href="#">FLIGHTS</a> / <a href="#">JFK - LHR</a> / <span class="current-crumb">PASSENGER DETAILS & CHECKOUT</span>
+      </div>
+      <div class="fare-lock-badge">
+        <span class="material-symbols-outlined">timer</span>
+        <div class="fare-lock-text">
+          <span class="fare-lock-title">FARE LOCK ACTIVE</span>
+          <span class="fare-lock-timer">15:28</span>
+        </div>
+      </div>
+    </div>
+
+    <h1 class="page-title">Confirm & Finalize Reservation</h1>
+
+    <!-- STEPS PROGRESS BAR -->
+    <div class="checkout-steps">
+      <div class="step completed">
+        <div class="step-icon"><span class="material-symbols-outlined">check</span></div>
+        <span class="step-label">Flight Selection</span>
+      </div>
+      <div class="step-line active-line"></div>
+      <div class="step active">
+        <div class="step-num">2</div>
+        <span class="step-label">Passenger Details</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <span class="step-label">Payment & Confirmation</span>
+      </div>
+    </div>
+
+    <!-- MAIN TWO-COLUMN CHECKOUT GRID -->
+    <div class="checkout-grid">
+      
+      <!-- LEFT COLUMN: FORM -->
+      <div class="checkout-form-column">
+        <div class="card form-card">
+          <div class="card-header-flex">
+            <div class="card-title-box">
+              <span class="material-symbols-outlined card-icon">person</span>
+              <div>
+                <h2>Passenger Information</h2>
+                <p class="card-subtitle">Primary passenger name must exactly mirror your government-issued passport.</p>
+              </div>
+            </div>
+            <span class="badge-adult">ADULT 1</span>
+          </div>
+
+          <form class="passenger-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label>First Name *</label>
+                <div class="input-wrapper">
+                  <input type="text" value="Baleseng" required>
+                  <span class="material-symbols-outlined input-status-icon success">check_circle</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Last Name *</label>
+                <div class="input-wrapper">
+                  <input type="text" value="Alexander" required>
+                  <span class="material-symbols-outlined input-status-icon success">check_circle</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email Address *</label>
+                <div class="input-wrapper">
+                  <span class="material-symbols-outlined prefix-icon">mail</span>
+                  <input type="email" value="Baleseng@mlab.co.za" required>
+                </div>
+                <small class="form-hint">E-ticket receipt and boarding pass will be dispatched here.</small>
+              </div>
+              <div class="form-group">
+                <label>Phone Number *</label>
+                <div class="input-wrapper">
+                  <span class="material-symbols-outlined prefix-icon">phone</span>
+                  <input type="tel" value="+1 (555) 234-5678" required>
+                </div>
+                <small class="form-hint">For critical operational and gate change SMS notifications.</small>
+              </div>
+            </div>
+
+            <div class="form-group full-width">
+              <div class="label-with-meta">
+                <label>ID / Passport Number *</label>
+                <span class="meta-tag-blue">VALID UNTIL 2031</span>
+              </div>
+              <div class="input-wrapper passport-wrapper">
+                <span class="material-symbols-outlined prefix-icon">badge</span>
+                <input type="text" value="P982410294" required>
+                <span class="passport-pill">PASSPORT</span>
+              </div>
+            </div>
+
+            <div class="checkbox-group-container">
+              <label class="custom-checkbox">
+                <input type="checkbox" checked>
+                <span class="checkmark"></span>
+                <span class="checkbox-text">
+                  <strong>Accrue AeroMiles on this Journey</strong>
+                  <span class="checkbox-subtext">Passenger Frequent Flyer ID: <strong>AL-FF-90214</strong> (SkyPriority Emerald Tier)</span>
+                </span>
+              </label>
+
+              <label class="custom-checkbox">
+                <input type="checkbox" checked required>
+                <span class="checkmark"></span>
+                <span class="checkbox-text">
+                  I accept the <a href="#" class="link-inline">Terms of Carriage</a>, hazardous materials notice, and international border security requirements.
+                </span>
+              </label>
+            </div>
+
+            <button type="submit" class="confirm-booking-btn">
+              <span class="material-symbols-outlined">lock</span> Confirm Booking <span class="arrow">&rarr;</span>
+            </button>
+            
+            <div class="secure-ssl-footer">
+              <span class="material-symbols-outlined">verified_user</span> 256-Bit SSL Encrypted Enterprise Dispatch Transaction
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- RIGHT COLUMN: FLIGHT SUMMARY & PRICING -->
+      <div class="checkout-summary-column">
+        
+        <!-- FLIGHT SUMMARY CARD -->
+        <div class="card flight-summary-card">
+          <div class="flight-summary-top">
+            <div class="flight-summary-title-grp">
+              <span class="material-symbols-outlined">flight</span>
+              <div>
+                <h3>FLIGHT SUMMARY</h3>
+                <span>NON-STOP COMMERCIAL ROUTE</span>
+              </div>
+            </div>
+            <span class="flight-code-badge">AL-104</span>
+          </div>
+          <div class="cabin-tier-label">CABIN: MAIN CABIN (K)</div>
+
+          <div class="flight-route-box">
+            <div class="route-point">
+              <span class="airport-code">JFK</span>
+              <span class="airport-city">New York</span>
+              <span class="terminal-info">Terminal 4, Gate B26</span>
+              <span class="flight-time">08:30</span>
+            </div>
+
+            <div class="route-center-graphic">
+              <span class="flight-duration">7h 15m</span>
+              <div class="route-line-graphic">
+                <span class="dot left"></span>
+                <span class="material-symbols-outlined plane-icon">flight</span>
+                <span class="dot right"></span>
+              </div>
+              <span class="direct-label">DIRECT FLIGHT</span>
+            </div>
+
+            <div class="route-point right-align">
+              <span class="airport-code">LHR</span>
+              <span class="airport-city">London</span>
+              <span class="terminal-info">Heathrow T3</span>
+              <span class="flight-time">20:45</span>
+            </div>
+          </div>
+
+          <div class="flight-meta-grid">
+            <div class="meta-box">
+              <span class="meta-box-title">SCHEDULED DATE</span>
+              <div class="meta-box-val"><span class="material-symbols-outlined">calendar_today</span> October 28, 2025</div>
+            </div>
+            <div class="meta-box">
+              <span class="meta-box-title">OPERATING AIRCRAFT</span>
+              <div class="meta-box-val"><span class="material-symbols-outlined">airplanemode_active</span> Boeing 777-300ER</div>
+            </div>
+          </div>
+
+          <div class="amenities-row">
+            <div class="amenity-item"><span class="material-symbols-outlined">luggage</span> 1x Carry-on + 1x Checked (23kg)</div>
+            <div class="amenity-item"><span class="material-symbols-outlined">restaurant</span> Complimentary Meal Service</div>
+            <div class="amenity-item"><span class="material-symbols-outlined">wifi</span> Wi-Fi Available</div>
+          </div>
+
+          <!-- PRICING BREAKDOWN -->
+          <div class="pricing-breakdown">
+            <div class="price-line">
+              <span>Base Airfare (Adult x 1)</span>
+              <span>$512.40</span>
+            </div>
+            <div class="price-line">
+              <span>International Passenger Surcharge</span>
+              <span>$68.20</span>
+            </div>
+            <div class="price-line">
+              <span>Security & Airport Facility Fee</span>
+              <span>$42.80</span>
+            </div>
+            <div class="price-line">
+              <span>Carbon Offset Contribution</span>
+              <span class="green-text">$16.60</span>
+            </div>
+          </div>
+
+          <div class="price-total-box">
+            <div>
+              <span class="total-label">Total Price</span>
+              <span class="total-sub">All taxes and airport fees included</span>
+            </div>
+            <div class="total-amount">
+              $640.00
+              <span class="currency-guarantee">USD GUARANTEED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- FLEXIBLE DEPARTURE GUARANTEE -->
+        <div class="card guarantee-card">
+          <div class="guarantee-header">
+            <span class="material-symbols-outlined">verified</span>
+            <h4>Flexible Departure Guarantee</h4>
+          </div>
+          <p>Need to make adjustments? Changes permitted up to 2 hours prior to scheduled departure time with zero penalty fees.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ==========================================
+       BOOKING CONFIRMED STATE (Second Screen Section)
+       ========================================== -->
+    <div class="confirmation-success-container">
+      <div class="success-banner">
+        <div class="success-banner-left">
+          <span class="material-symbols-outlined success-check">check_circle</span>
+          <div>
+            <h2>Booking Confirmed Successfully!</h2>
+            <p>Electronic ticket receipt and confirmation slip has been sent to a.wright@example.com</p>
+          </div>
+        </div>
+        <div class="status-confirmed-badge">
+          STATUS: CONFIRMED
+        </div>
+      </div>
+
+      <div class="boarding-pass-card">
+        <div class="pass-main-section">
+          <div class="pass-meta-row">
+            <div class="pass-meta-block">
+              <span class="meta-label">BOOKING REFERENCE</span>
+              <span class="meta-val-code">AL-8924</span>
+            </div>
+            <div class="pass-meta-block">
+              <span class="meta-label">PASSENGER NAME</span>
+              <span class="meta-val-name">Baleseng Alexander</span>
+            </div>
+            <div class="pass-meta-block">
+              <span class="meta-label">FLIGHT</span>
+              <span class="meta-val">AL-104</span>
+            </div>
+            <div class="pass-meta-block">
+              <span class="meta-label">SEAT SELECTION</span>
+              <span class="pass-seat">14A (Window)</span>
+            </div>
+          </div>
+
+          <div class="pass-route-strip">
+            <div class="pass-route-left">
+              <div class="airline-mini-logo"><span class="material-symbols-outlined">flight_takeoff</span></div>
+              <div>
+                <div class="pass-route-title">JFK &rarr; LHR</div>
+                <div class="pass-route-sub">New York (JFK) to London Heathrow (LHR)</div>
+              </div>
+            </div>
+            <div class="pass-route-right">
+              <span class="meta-label">SCHEDULE DEPARTURE</span>
+              <span class="pass-dep-time">Oct 28, 2025, 08:30</span>
+            </div>
+          </div>
+
+          <div class="pass-footer-badges">
+            <div class="pass-badge-item"><span class="material-symbols-outlined">schedule</span> Online Check-in opens 24h prior</div>
+            <div class="pass-badge-item"><span class="material-symbols-outlined">airlines</span> Boarding Gate: T4 - B26</div>
+            <div class="pass-badge-item"><span class="material-symbols-outlined">star</span> Zone 2 Boarding Priority</div>
+          </div>
+        </div>
+
+        <div class="pass-barcode-section">
+          <span class="barcode-title">BOARDING PASS STUB</span>
+          <div class="barcode-graphic">
+            |||||| |||||||| |||||||| |||||
+            <span class="barcode-code-text">AL8924JFK-LHR</span>
+          </div>
+          <span class="barcode-sub">SCAN AT AIRPORT SECURITY & GATE</span>
+          <div class="stub-passenger">Baleseng Alexander</div>
+          <div class="stub-ticket">E-Ticket: 014-998241029</div>
+        </div>
+      </div>
+
+      <div class="success-action-bar">
+        <div class="sync-status">
+          <span class="material-symbols-outlined">sync</span> All flight reservations are automatically synced to your AeroLink profile.
+        </div>
+        <div class="success-buttons">
+          <button class="btn-outline"><span class="material-symbols-outlined">folder</span> Go to My Bookings</button>
+          <button class="btn-primary"><span class="material-symbols-outlined">airplane_ticket</span> Proceed to Online Check-in</button>
+          <button class="btn-outline"><span class="material-symbols-outlined">print</span> Print Confirmation</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==========================================
+     FOOTER SECTION
+     ========================================== -->
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-mark">
+          <span class="material-symbols-outlined">flight_takeoff</span>
+        </div>
+        <span class="footer-brand-title">AeroLink</span>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-copyright">
+        &copy; 2025 AeroLink Aviation Systems Inc. All rights reserved. High-Precision Flight Dispatch.
+      </div>
+      <div class="footer-links">
+        <a href="#">Flight Status</a>
+        <a href="#">Terms of Carriage</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">API Documentation</a>
+        <a href="#">Safety Regulations</a>
+        <a href="#">Support</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
