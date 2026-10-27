@@ -14,14 +14,17 @@
   --text-light: #94a3b8;
   --border-color: #e2e8f0;
   --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  /* added for the dashboard-style header */
+  --navy: #101a2d;
+  --blue: #0757d5;
 }
-
+ 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-
+ 
 body {
   font-family: var(--font-family);
   background-color: var(--background);
@@ -31,165 +34,250 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
-
+ 
 /* ==========================================
-   HEADER / NAVIGATION
+   HEADER / NAVIGATION (copied from dashboard)
    ========================================== */
-.app-header {
-  background-color: var(--card-bg);
-  border-bottom: 1px solid var(--border-color);
-  padding: 12px 32px;
+:where(.topbar a) {
+  color: inherit;
+  text-decoration: none;
+}
+:where(.topbar button) {
+  font: inherit;
+  cursor: pointer;
+}
+ 
+.material-symbols-rounded {
+  font-family: "Material Symbols Rounded";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+ 
+.topbar {
+  min-height: 70px;
+  background: var(--navy);
+  color: #eaf0fb;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 24px;
+  padding: 0 25px;
+  border-bottom: 1px solid #26334a;
 }
-
-.brand-container {
+.brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  flex: 0 0 190px;
 }
-
-.brand-logo {
-  width: 32px;
-  height: 32px;
-  background-color: var(--primary);
-  color: #ffffff;
-  border-radius: 8px;
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  background: var(--blue);
+  color: white;
+  border-radius: 9px;
+  font-size: 23px;
+}
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.brand-copy strong {
+  font-size: 16px;
+  letter-spacing: -0.4px;
+  color: white;
+}
+.brand-copy small {
+  font-size: 8px;
+  letter-spacing: 0.8px;
+  color: #b6c3d9;
+}
+.main-nav {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 4px;
+  flex: 1;
+  align-self: stretch;
+}
+.main-nav a {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.brand-logo .material-symbols-outlined {
-  font-size: 18px;
-}
-
-.brand-name {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.system-badge {
-  background: #334155;
-  color: #ffffff;
-  font-size: 10px;
-  font-weight: 700;
-  padding: 3px 8px;
-  border-radius: 4px;
-  letter-spacing: 0.5px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--primary);
+  padding: 0 10px;
+  text-align: center;
+  color: #bdc8db;
+  font-size: 11px;
   font-weight: 600;
+  max-width: 100px;
+  line-height: 1.35;
+  border-bottom: 3px solid transparent;
 }
-
-.header-right {
+.main-nav a:hover,
+.main-nav a.active {
+  color: white;
+}
+.main-nav a.active {
+  border-bottom-color: #2e7bff;
+}
+.account-tools {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 15px;
 }
-
-.header-meta {
-  text-align: right;
-  border-right: 1px solid var(--border-color);
-  padding-right: 16px;
+.weather {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border: 1px solid #2a3952;
+  background: #17243b;
+  border-radius: 6px;
 }
-
+.weather > .material-symbols-rounded {
+  color: #b8c9e4;
+}
+.weather span:last-child,
+.profile span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.weather b,
+.profile b {
+  font-size: 10px;
+  white-space: nowrap;
+}
+.weather small,
+.profile small {
+  font-size: 9px;
+  color: #9baac2;
+}
+.icon-button {
+  position: relative;
+  border: 0;
+  color: #c7d2e5;
+  background: transparent;
+  padding: 5px;
+}
+.icon-button i {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #3182ff;
+  top: 4px;
+  right: 4px;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.avatar {
+  display: grid;
+  place-items: center;
+  width: 29px;
+  height: 29px;
+  background: #dce8ff;
+  color: #1d4f9c;
+  border-radius: 50%;
+  font-weight: 800;
+  font-size: 10px;
+}
+.logout {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #c4cee0;
+  white-space: nowrap;
+  font-size: 11px;
+}
+.logout .material-symbols-rounded {
+  font-size: 16px;
+}
+ 
+/* Kept from the old header: the boarding pass uses these */
 .meta-label {
   display: block;
   font-size: 11px;
   font-weight: 700;
   color: var(--text-muted);
 }
-
+ 
 .meta-val {
   font-size: 11px;
   color: var(--text-muted);
 }
-
-.icon-btn {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
+ 
+@media (max-width: 1250px) {
+  .topbar {
+    gap: 13px;
+    padding: 0 16px;
+  }
+  .brand {
+    flex-basis: 150px;
+  }
+  .main-nav a {
+    padding: 0 6px;
+    font-size: 10px;
+  }
+  .account-tools {
+    gap: 8px;
+  }
+  .weather {
+    display: none;
+  }
 }
-
-.user-profile {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+@media (max-width: 850px) {
+  .topbar {
+    flex-wrap: wrap;
+    padding: 12px 16px 0;
+    gap: 12px;
+  }
+  .brand {
+    flex: 1 1 auto;
+  }
+  .account-tools {
+    margin-left: auto;
+  }
+  .main-nav {
+    order: 3;
+    flex: 1 1 100%;
+    overflow-x: auto;
+    min-height: 42px;
+    justify-content: flex-start;
+  }
+  .main-nav a {
+    flex: 0 0 auto;
+    padding: 0 10px;
+    max-width: none;
+    white-space: nowrap;
+  }
 }
-
-.user-avatar {
-  background: #0f172a;
-  color: #ffffff;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 12px;
-  font-weight: 700;
+@media (max-width: 560px) {
+  .profile {
+    display: none;
+  }
+  .logout {
+    font-size: 0;
+  }
+  .logout .material-symbols-rounded {
+    font-size: 19px;
+  }
 }
-
-.user-info {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-name {
-  font-size: 12px;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.user-tier {
-  font-size: 9px;
-  font-weight: 700;
-  color: #d97706;
-  letter-spacing: 0.5px;
-}
-
-.logout-btn {
-  background: #ffffff;
-  border: 1px solid var(--border-color);
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--text-main);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  cursor: pointer;
-}
-
-.logout-btn .material-symbols-outlined {
-  font-size: 16px;
-  color: var(--text-muted);
-}
-
+ 
 /* ==========================================
    MAIN CONTAINER & CHECKOUT LAYOUT
    ========================================== */
@@ -200,34 +288,34 @@ body {
   width: 100%;
   flex: 1;
 }
-
+ 
 .page-top-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 12px;
 }
-
+ 
 .breadcrumb-trail {
   font-size: 11px;
   font-weight: 700;
   color: var(--text-muted);
   letter-spacing: 0.5px;
 }
-
+ 
 .breadcrumb-trail a {
   color: var(--text-muted);
   text-decoration: none;
 }
-
+ 
 .breadcrumb-trail a:hover {
   color: var(--primary);
 }
-
+ 
 .breadcrumb-trail .current-crumb {
   color: var(--primary);
 }
-
+ 
 .fare-lock-badge {
   background: #ffffff;
   border: 1px solid var(--border-color);
@@ -237,36 +325,36 @@ body {
   align-items: center;
   gap: 8px;
 }
-
+ 
 .fare-lock-badge .material-symbols-outlined {
   color: var(--primary);
   font-size: 18px;
 }
-
+ 
 .fare-lock-text {
   display: flex;
   flex-direction: column;
 }
-
+ 
 .fare-lock-title {
   font-size: 9px;
   font-weight: 700;
   color: var(--text-muted);
 }
-
+ 
 .fare-lock-timer {
   font-size: 13px;
   font-weight: 700;
   color: var(--text-main);
 }
-
+ 
 .page-title {
   font-size: 1.75rem;
   font-weight: 700;
   color: var(--text-main);
   margin-bottom: 24px;
 }
-
+ 
 /* CHECKOUT STEPS PROGRESS */
 .checkout-steps {
   display: flex;
@@ -274,7 +362,7 @@ body {
   margin-bottom: 32px;
   max-width: 700px;
 }
-
+ 
 .step {
   display: flex;
   align-items: center;
@@ -283,7 +371,7 @@ body {
   font-weight: 600;
   color: var(--text-muted);
 }
-
+ 
 .step.completed .step-icon {
   background: var(--success-green);
   color: #ffffff;
@@ -295,11 +383,11 @@ body {
   justify-content: center;
   font-size: 14px;
 }
-
+ 
 .step.active {
   color: var(--primary);
 }
-
+ 
 .step.active .step-num {
   background: var(--primary);
   color: #ffffff;
@@ -312,7 +400,7 @@ body {
   font-size: 12px;
   font-weight: 700;
 }
-
+ 
 .step-num {
   background: #e2e8f0;
   color: var(--text-muted);
@@ -325,18 +413,18 @@ body {
   font-size: 12px;
   font-weight: 700;
 }
-
+ 
 .step-line {
   flex: 1;
   height: 2px;
   background: var(--border-color);
   margin: 0 16px;
 }
-
+ 
 .step-line.active-line {
   background: var(--primary);
 }
-
+ 
 /* GRID TWO COLUMNS */
 .checkout-grid {
   display: grid;
@@ -345,7 +433,7 @@ body {
   align-items: start;
   margin-bottom: 40px;
 }
-
+ 
 .card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
@@ -353,7 +441,7 @@ body {
   padding: 24px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.02);
 }
-
+ 
 /* PASSENGER FORM CARD */
 .card-header-flex {
   display: flex;
@@ -363,12 +451,12 @@ body {
   border-bottom: 1px solid var(--border-color);
   padding-bottom: 16px;
 }
-
+ 
 .card-title-box {
   display: flex;
   gap: 12px;
 }
-
+ 
 .card-icon {
   background: var(--primary-light);
   color: var(--primary);
@@ -377,19 +465,19 @@ body {
   font-size: 20px;
   height: max-content;
 }
-
+ 
 .card-title-box h2 {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--text-main);
 }
-
+ 
 .card-subtitle {
   font-size: 12px;
   color: var(--text-muted);
   margin-top: 2px;
 }
-
+ 
 .badge-adult {
   background: #f1f5f9;
   color: var(--primary);
@@ -399,53 +487,53 @@ body {
   border-radius: 4px;
   border: 1px solid var(--border-color);
 }
-
+ 
 .passenger-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
-
+ 
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
 }
-
+ 
 .form-group {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-
+ 
 .form-group.full-width {
   grid-column: span 2;
 }
-
+ 
 .form-group label {
   font-size: 12px;
   font-weight: 600;
   color: var(--text-main);
 }
-
+ 
 .label-with-meta {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-
+ 
 .meta-tag-blue {
   font-size: 10px;
   font-weight: 700;
   color: var(--primary);
 }
-
+ 
 .input-wrapper {
   position: relative;
   display: flex;
   align-items: center;
 }
-
+ 
 .input-wrapper input {
   width: 100%;
   padding: 10px 14px;
@@ -457,32 +545,32 @@ body {
   background: #ffffff;
   transition: border-color 0.2s;
 }
-
+ 
 .input-wrapper input:focus {
   border-color: var(--primary);
   box-shadow: 0 0 0 3px rgba(29, 97, 224, 0.1);
 }
-
+ 
 .input-wrapper .prefix-icon {
   position: absolute;
   left: 12px;
   color: var(--text-muted);
   font-size: 18px;
 }
-
+ 
 .input-wrapper input[type="email"],
 .input-wrapper input[type="tel"],
 .passport-wrapper input {
   padding-left: 38px;
 }
-
+ 
 .input-status-icon.success {
   position: absolute;
   right: 12px;
   color: var(--success-green);
   font-size: 18px;
 }
-
+ 
 .passport-pill {
   position: absolute;
   right: 10px;
@@ -494,12 +582,12 @@ body {
   border-radius: 4px;
   border: 1px solid var(--border-color);
 }
-
+ 
 .form-hint {
   font-size: 11px;
   color: var(--text-light);
 }
-
+ 
 /* CHECKBOXES */
 .checkbox-group-container {
   display: flex;
@@ -509,7 +597,7 @@ body {
   border-top: 1px solid var(--border-color);
   padding-top: 20px;
 }
-
+ 
 .custom-checkbox {
   display: flex;
   align-items: flex-start;
@@ -519,13 +607,13 @@ body {
   color: var(--text-main);
   user-select: none;
 }
-
+ 
 .custom-checkbox input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
-
+ 
 .checkmark {
   width: 18px;
   height: 18px;
@@ -538,35 +626,35 @@ body {
   flex-shrink: 0;
   margin-top: 1px;
 }
-
+ 
 .custom-checkbox input:checked ~ .checkmark {
   background-color: var(--primary);
   border-color: var(--primary);
 }
-
+ 
 .custom-checkbox input:checked ~ .checkmark::after {
   content: "check";
   font-family: 'Material Symbols Outlined';
   font-size: 14px;
   color: white;
 }
-
+ 
 .checkbox-text {
   line-height: 1.4;
 }
-
+ 
 .checkbox-subtext {
   display: block;
   font-size: 11px;
   color: var(--text-muted);
   margin-top: 2px;
 }
-
+ 
 .link-inline {
   color: var(--primary);
   text-decoration: underline;
 }
-
+ 
 .confirm-booking-btn {
   background: var(--primary);
   color: #ffffff;
@@ -583,15 +671,15 @@ body {
   transition: background 0.2s;
   margin-top: 8px;
 }
-
+ 
 .confirm-booking-btn:hover {
   background: var(--primary-hover);
 }
-
+ 
 .confirm-booking-btn .material-symbols-outlined {
   font-size: 18px;
 }
-
+ 
 .secure-ssl-footer {
   text-align: center;
   font-size: 11px;
@@ -602,29 +690,29 @@ body {
   gap: 6px;
   margin-top: 4px;
 }
-
+ 
 .secure-ssl-footer .material-symbols-outlined {
   font-size: 14px;
   color: var(--success-green);
 }
-
+ 
 /* RIGHT COLUMN: FLIGHT SUMMARY */
 .flight-summary-card {
   margin-bottom: 20px;
 }
-
+ 
 .flight-summary-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
 }
-
+ 
 .flight-summary-title-grp {
   display: flex;
   gap: 10px;
   align-items: center;
 }
-
+ 
 .flight-summary-title-grp .material-symbols-outlined {
   background: var(--primary-light);
   color: var(--primary);
@@ -632,20 +720,20 @@ body {
   border-radius: 8px;
   font-size: 18px;
 }
-
+ 
 .flight-summary-title-grp h3 {
   font-size: 12px;
   font-weight: 700;
   color: var(--text-main);
   letter-spacing: 0.5px;
 }
-
+ 
 .flight-summary-title-grp span {
   font-size: 10px;
   color: var(--text-muted);
   font-weight: 600;
 }
-
+ 
 .flight-code-badge {
   background: #f1f5f9;
   border: 1px solid var(--border-color);
@@ -654,7 +742,7 @@ body {
   padding: 4px 8px;
   border-radius: 4px;
 }
-
+ 
 .cabin-tier-label {
   font-size: 10px;
   font-weight: 700;
@@ -662,7 +750,7 @@ body {
   margin: 12px 0 20px 0;
   letter-spacing: 0.5px;
 }
-
+ 
 .flight-route-box {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -673,55 +761,55 @@ body {
   padding: 16px;
   margin-bottom: 20px;
 }
-
+ 
 .route-point {
   display: flex;
   flex-direction: column;
 }
-
+ 
 .route-point.right-align {
   text-align: right;
 }
-
+ 
 .airport-code {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-main);
 }
-
+ 
 .airport-city {
   font-size: 12px;
   font-weight: 600;
   color: var(--text-main);
 }
-
+ 
 .terminal-info {
   font-size: 10px;
   color: var(--text-muted);
   margin-top: 2px;
 }
-
+ 
 .flight-time {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--primary);
   margin-top: 6px;
 }
-
+ 
 .route-center-graphic {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0 12px;
 }
-
+ 
 .flight-duration {
   font-size: 10px;
   font-weight: 600;
   color: var(--text-muted);
   margin-bottom: 4px;
 }
-
+ 
 .route-line-graphic {
   position: relative;
   width: 120px;
@@ -731,7 +819,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-
+ 
 .route-line-graphic .dot {
   width: 6px;
   height: 6px;
@@ -739,17 +827,17 @@ body {
   border-radius: 50%;
   position: absolute;
 }
-
+ 
 .route-line-graphic .dot.left { left: 0; }
 .route-line-graphic .dot.right { right: 0; }
-
+ 
 .route-line-graphic .plane-icon {
   font-size: 16px;
   color: var(--primary);
   background: #f8fafc;
   padding: 0 4px;
 }
-
+ 
 .direct-label {
   font-size: 9px;
   font-weight: 700;
@@ -757,21 +845,21 @@ body {
   margin-top: 4px;
   letter-spacing: 0.5px;
 }
-
+ 
 .flight-meta-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
   margin-bottom: 20px;
 }
-
+ 
 .meta-box {
   background: #f8fafc;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 10px 12px;
 }
-
+ 
 .meta-box-title {
   font-size: 9px;
   font-weight: 700;
@@ -779,7 +867,7 @@ body {
   display: block;
   margin-bottom: 4px;
 }
-
+ 
 .meta-box-val {
   font-size: 11px;
   font-weight: 600;
@@ -788,12 +876,12 @@ body {
   align-items: center;
   gap: 6px;
 }
-
+ 
 .meta-box-val .material-symbols-outlined {
   font-size: 14px;
   color: var(--primary);
 }
-
+ 
 .amenities-row {
   display: flex;
   flex-direction: column;
@@ -803,7 +891,7 @@ body {
   padding: 16px 0;
   margin-bottom: 20px;
 }
-
+ 
 .amenity-item {
   display: flex;
   align-items: center;
@@ -811,31 +899,31 @@ body {
   font-size: 11px;
   color: var(--text-muted);
 }
-
+ 
 .amenity-item .material-symbols-outlined {
   font-size: 14px;
   color: var(--primary);
 }
-
+ 
 .pricing-breakdown {
   display: flex;
   flex-direction: column;
   gap: 10px;
   margin-bottom: 16px;
 }
-
+ 
 .price-line {
   display: flex;
   justify-content: space-between;
   font-size: 12px;
   color: var(--text-muted);
 }
-
+ 
 .price-line .green-text {
   color: var(--success-green);
   font-weight: 600;
 }
-
+ 
 .price-total-box {
   display: flex;
   justify-content: space-between;
@@ -844,19 +932,19 @@ body {
   padding-top: 16px;
   margin-top: 16px;
 }
-
+ 
 .total-label {
   font-size: 13px;
   font-weight: 700;
   color: var(--text-main);
   display: block;
 }
-
+ 
 .total-sub {
   font-size: 10px;
   color: var(--text-muted);
 }
-
+ 
 .total-amount {
   font-size: 1.5rem;
   font-weight: 700;
@@ -865,44 +953,44 @@ body {
   display: flex;
   flex-direction: column;
 }
-
+ 
 .currency-guarantee {
   font-size: 9px;
   font-weight: 700;
   color: var(--success-green);
   letter-spacing: 0.5px;
 }
-
+ 
 /* GUARANTEE CARD */
 .guarantee-card {
   background: var(--primary-light);
   border-color: #bfdbfe;
 }
-
+ 
 .guarantee-header {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 8px;
 }
-
+ 
 .guarantee-header .material-symbols-outlined {
   color: var(--primary);
   font-size: 18px;
 }
-
+ 
 .guarantee-header h4 {
   font-size: 13px;
   font-weight: 700;
   color: var(--primary);
 }
-
+ 
 .guarantee-card p {
   font-size: 11px;
   color: var(--text-main);
   line-height: 1.4;
 }
-
+ 
 /* ==========================================
    BOOKING CONFIRMED STATE (Second Screen)
    ========================================== */
@@ -914,7 +1002,7 @@ body {
   box-shadow: 0 1px 3px rgba(0,0,0,0.02);
   margin-top: 40px;
 }
-
+ 
 .success-banner {
   background: var(--success-green);
   color: #ffffff;
@@ -925,28 +1013,28 @@ body {
   justify-content: space-between;
   margin-bottom: 24px;
 }
-
+ 
 .success-banner-left {
   display: flex;
   align-items: center;
   gap: 16px;
 }
-
+ 
 .success-check {
   font-size: 32px;
 }
-
+ 
 .success-banner h2 {
   font-size: 1.25rem;
   font-weight: 700;
 }
-
+ 
 .success-banner p {
   font-size: 12px;
   opacity: 0.9;
   margin-top: 2px;
 }
-
+ 
 .status-confirmed-badge {
   background: rgba(255, 255, 255, 0.2);
   padding: 6px 12px;
@@ -955,7 +1043,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.5px;
 }
-
+ 
 .boarding-pass-card {
   display: grid;
   grid-template-columns: 1fr 300px;
@@ -965,7 +1053,7 @@ body {
   overflow: hidden;
   margin-bottom: 24px;
 }
-
+ 
 .pass-main-section {
   padding: 24px;
   display: flex;
@@ -973,38 +1061,38 @@ body {
   justify-content: space-between;
   border-right: 2px dashed var(--border-color);
 }
-
+ 
 .pass-meta-row {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   margin-bottom: 20px;
 }
-
+ 
 .pass-meta-block .meta-label {
   font-size: 9px;
   color: var(--text-muted);
   margin-bottom: 2px;
 }
-
+ 
 .meta-val-code {
   font-size: 1.1rem;
   font-weight: 700;
   color: var(--primary);
 }
-
+ 
 .meta-val-name {
   font-size: 12px;
   font-weight: 700;
   color: var(--text-main);
 }
-
+ 
 .pass-seat {
   font-size: 12px;
   font-weight: 700;
   color: var(--success-green);
 }
-
+ 
 .pass-route-strip {
   display: flex;
   justify-content: space-between;
@@ -1015,13 +1103,13 @@ body {
   border-radius: 6px;
   margin-bottom: 16px;
 }
-
+ 
 .pass-route-left {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-
+ 
 .airline-mini-logo {
   background: var(--primary);
   color: #ffffff;
@@ -1032,33 +1120,33 @@ body {
   align-items: center;
   justify-content: center;
 }
-
+ 
 .airline-mini-logo .material-symbols-outlined {
   font-size: 14px;
 }
-
+ 
 .pass-route-title {
   font-size: 13px;
   font-weight: 700;
   color: var(--text-main);
 }
-
+ 
 .pass-route-sub {
   font-size: 10px;
   color: var(--text-muted);
 }
-
+ 
 .pass-dep-time {
   font-size: 12px;
   font-weight: 700;
   color: var(--text-main);
 }
-
+ 
 .pass-footer-badges {
   display: flex;
   gap: 20px;
 }
-
+ 
 .pass-badge-item {
   display: flex;
   align-items: center;
@@ -1067,12 +1155,12 @@ body {
   color: var(--text-muted);
   font-weight: 600;
 }
-
+ 
 .pass-badge-item .material-symbols-outlined {
   font-size: 14px;
   color: var(--primary);
 }
-
+ 
 .pass-barcode-section {
   background: #ffffff;
   padding: 24px;
@@ -1082,7 +1170,7 @@ body {
   justify-content: center;
   text-align: center;
 }
-
+ 
 .barcode-title {
   font-size: 9px;
   font-weight: 700;
@@ -1090,7 +1178,7 @@ body {
   margin-bottom: 12px;
   letter-spacing: 0.5px;
 }
-
+ 
 .barcode-graphic {
   font-family: monospace;
   font-size: 20px;
@@ -1099,7 +1187,7 @@ body {
   line-height: 1;
   margin-bottom: 8px;
 }
-
+ 
 .barcode-code-text {
   display: block;
   font-family: var(--font-family);
@@ -1109,25 +1197,25 @@ body {
   letter-spacing: 1px;
   margin-top: 4px;
 }
-
+ 
 .barcode-sub {
   font-size: 8px;
   font-weight: 700;
   color: var(--text-light);
   margin-bottom: 12px;
 }
-
+ 
 .stub-passenger {
   font-size: 11px;
   font-weight: 700;
   color: var(--text-main);
 }
-
+ 
 .stub-ticket {
   font-size: 10px;
   color: var(--text-muted);
 }
-
+ 
 .success-action-bar {
   display: flex;
   justify-content: space-between;
@@ -1135,7 +1223,7 @@ body {
   border-top: 1px solid var(--border-color);
   padding-top: 20px;
 }
-
+ 
 .sync-status {
   display: flex;
   align-items: center;
@@ -1143,17 +1231,17 @@ body {
   font-size: 11px;
   color: var(--text-muted);
 }
-
+ 
 .sync-status .material-symbols-outlined {
   font-size: 16px;
   color: var(--primary);
 }
-
+ 
 .success-buttons {
   display: flex;
   gap: 10px;
 }
-
+ 
 .btn-outline {
   background: #ffffff;
   border: 1px solid var(--border-color);
@@ -1167,16 +1255,16 @@ body {
   gap: 6px;
   cursor: pointer;
 }
-
+ 
 .btn-outline:hover {
   background: #f8fafc;
 }
-
+ 
 .btn-outline .material-symbols-outlined {
   font-size: 16px;
   color: var(--text-muted);
 }
-
+ 
 .btn-primary {
   background: var(--primary);
   border: 1px solid var(--primary);
@@ -1190,15 +1278,15 @@ body {
   gap: 6px;
   cursor: pointer;
 }
-
+ 
 .btn-primary:hover {
   background: var(--primary-hover);
 }
-
+ 
 .btn-primary .material-symbols-outlined {
   font-size: 16px;
 }
-
+ 
 /* ==========================================
    FOOTER SECTION
    ========================================== */
@@ -1209,7 +1297,7 @@ body {
   width: 100%;
   margin-top: auto;
 }
-
+ 
 .footer-inner {
   max-width: 1500px;
   margin: 0 auto;
@@ -1219,13 +1307,13 @@ body {
   flex-wrap: wrap;
   gap: 20px;
 }
-
+ 
 .footer-brand {
   display: flex;
   align-items: center;
   gap: 8px;
 }
-
+ 
 .footer-brand-mark {
   width: 28px;
   height: 28px;
@@ -1237,38 +1325,38 @@ body {
   justify-content: center;
   flex-shrink: 0;
 }
-
+ 
 .footer-brand-mark .material-symbols-outlined {
   font-size: 16px;
   line-height: 1;
 }
-
+ 
 .footer-brand-title {
   font-size: 1rem;
   font-weight: 700;
   color: var(--text-main);
 }
-
+ 
 .footer-divider {
   width: 1px;
   height: 24px;
   background-color: #cbd5e0;
 }
-
+ 
 .footer-copyright {
   font-size: 11px;
   color: var(--text-muted);
   max-width: 450px;
   line-height: 1.4;
 }
-
+ 
 .footer-links {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
 }
-
+ 
 .footer-links a {
   font-size: 11px;
   font-weight: 500;
@@ -1276,7 +1364,7 @@ body {
   text-decoration: none;
   white-space: nowrap;
 }
-
+ 
 .footer-links a:hover {
   text-decoration: underline;
 }
