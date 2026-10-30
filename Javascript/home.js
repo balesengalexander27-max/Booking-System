@@ -1,3 +1,5 @@
+import { auth } from '../config.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/13.1.0/firebase-auth.js';
 import { getAllData } from '../db/db.js';
  
 const listEl = document.getElementById('flight-list');
@@ -132,4 +134,60 @@ listEl.addEventListener('click', (e) => {
   window.location.href = '../Booking.html?id=' + encodeURIComponent(button.dataset.id);
 });
  
+/* ---------- logged-in user in the header ---------- */
+ 
+function fillProfile(user) {
+  const avatar = document.querySelector('.profile .avatar');
+  const nameEl = document.querySelector('.profile b');
+  const subEl = document.querySelector('.profile small');
+  if (!avatar || !nameEl || !subEl) return;
+ 
+  if (!user) {
+    avatar.textContent = '?';
+    nameEl.textContent = 'Guest';
+    subEl.textContent = 'Not signed in';
+    return;
+  }
+ 
+  const emailName = (user.email || '').split('@')[0];
+  const name = user.displayName || emailName || 'Guest';
+  const initials = name
+    .split(/[\s._-]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase() || '?';
+ 
+  avatar.textContent = initials;
+  nameEl.textContent = name;
+  subEl.textContent = user.email || '';
+}
+ 
+onAuthStateChanged(auth, fillProfile);
+ 
 loadFlights();
+ 
+/* ---------- live station time (SAST) ---------- */
+ 
+const stationTimeEl = document.querySelector('.station-time strong');
+ 
+if (stationTimeEl) {
+  const stationFormatter = new Intl.DateTimeFormat('en-GB', {
+    timeZone: 'Africa/Johannesburg',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false
+  });
+ 
+  function updateStationTime() {
+    stationTimeEl.textContent = stationFormatter.format(new Date()) + ' SAST';
+  }
+ 
+  updateStationTime();
+  // Update at the start of every minute so it never drifts
+  setTimeout(() => {
+    updateStationTime();
+    setInterval(updateStationTime, 60000);
+  }, 60000 - (Date.now() % 60000));
+}

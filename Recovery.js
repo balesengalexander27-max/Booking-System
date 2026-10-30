@@ -1,50 +1,35 @@
+import { resetPassword } from "./auth/auth.js";
+ 
 const resetForm = document.getElementById("resetForm");
-
-resetForm.addEventListener("submit", function(event) {
+ 
+resetForm.addEventListener("submit", async function(event) {
     event.preventDefault();
-
-    const email = document.getElementById("reset-email").value;
-    const newPassword = document.getElementById("new-password").value;
-    const confirmPassword = document.getElementById("confirm-password").value;
-
-    // Get the saved account
-    const savedUser = localStorage.getItem("aerolinkUser");
-
-    // Check if an account exists
-    if (!savedUser) {
-        alert("No account has been registered yet.");
+ 
+    const email = document.getElementById("reset-email").value.trim();
+ 
+    // Check that the email is filled
+    if (email === "") {
+        alert("Please enter your registered email address.");
         return;
     }
-
-    // Convert saved data back into an object
-    const user = JSON.parse(savedUser);
-
-    // Check if email matches
-    if (email !== user.email) {
-        alert("No account was found with this email address.");
-        return;
+ 
+    try {
+        // Firebase emails the user a link to set a new password
+        await resetPassword(email);
+ 
+        alert("Password reset link sent! Check your email inbox (and spam folder).");
+ 
+        // Return to login
+        window.location.href = "logIn.html";
+    } catch (error) {
+        console.error("Password reset failed:", error);
+ 
+        if (error.code === "auth/user-not-found") {
+            alert("No account was found with this email address.");
+        } else if (error.code === "auth/invalid-email") {
+            alert("Please enter a valid email address.");
+        } else {
+            alert("Could not send the reset email: " + error.message);
+        }
     }
-
-    // Check that password fields are not empty
-    if (newPassword === "" || confirmPassword === "") {
-        alert("Please enter and confirm your new password.");
-        return;
-    }
-
-    // Check that passwords match
-    if (newPassword !== confirmPassword) {
-        alert("Passwords do not match.");
-        return;
-    }
-
-    // Update the password
-    user.password = newPassword;
-
-    // Save updated account
-    localStorage.setItem("aerolinkUser", JSON.stringify(user));
-
-    alert("Password reset successfully!");
-
-    // Return to login
-    window.location.href = "logIn.html";
 });

@@ -99,9 +99,51 @@ function fillSummary() {
  
 /* ---------- logged-in user ---------- */
  
+async function fillProfile(user) {
+  const avatar = document.querySelector('.profile .avatar');
+  const nameEl = document.querySelector('.profile b');
+  const subEl = document.querySelector('.profile small');
+  if (!avatar || !nameEl || !subEl) return;
+ 
+  if (!user) {
+    avatar.textContent = '?';
+    nameEl.textContent = 'Guest';
+    subEl.textContent = 'Not signed in';
+    return;
+  }
+ 
+  // Fallback name, used if the user has no saved profile
+  let name = user.displayName || (user.email || '').split('@')[0] || 'Guest';
+ 
+  // Read the real name saved at sign-up
+  try {
+    const snap = await getDoc(doc(db, 'users', user.uid));
+    if (snap.exists()) {
+      const d = snap.data();
+      const full = d.name || [d.firstName, d.lastName].filter(Boolean).join(' ');
+      if (full) name = full;
+    }
+  } catch (error) {
+    console.error('Could not load profile:', error);
+  }
+ 
+  const initials = name
+    .split(/[\s._-]+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase() || '?';
+ 
+  avatar.textContent = initials;
+  nameEl.textContent = name;
+  subEl.textContent = user.email || '';
+}
+ 
 onAuthStateChanged(auth, (user) => {
   currentUser = user;
   if (user && !$('email').value) $('email').value = user.email || '';
+  fillProfile(user);
 });
  
 /* ---------- green tick only when a field is filled ---------- */
@@ -181,7 +223,10 @@ function showConfirmation({ reference, passenger }) {
     '<div class="step-icon"><span class="material-symbols-outlined">check</span></div>' +
     '<span class="step-label">Passenger Details</span>';
   lines[1].classList.add('active-line');
-  steps[2].className = 'step active';
+  steps[2].className = 'step completed active';
+steps[2].innerHTML =
+  '<div class="step-icon"><span class="material-symbols-outlined">check</span></div>' +
+  '<span class="step-label">Booking Confirmed</span>';
  
   $('checkout-grid').style.display = 'none';
   $('confirmation').style.display = '';
